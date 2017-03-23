@@ -43,13 +43,13 @@ The system should run on modern browsers (such as Google Chrome, Firefox, Safari
 
 3)	Configurations
 	The system has many challenges including: 1) uploading large files (up to 200 MB), 2) the execution time can exceed 15 minutes for a single request, and 3) a lot of data are used at runtime. Consequently, some PHP configurations must be set as follows to handle these issues.
-	1.	post_max_size = 250 MByte
-	2.	file_uploads = On
-	3.	upload_max_filesize = 220 MByte
-	4.	max_file_uploads = 1 (1 means 1 file per request)
-	5.	max_input_time = -1 (-1 means unlimited input time) 
-	6.	max_execution_time = -1 (-1 means unlimited execution time)
-	7.	memory_limit = -1 (-1 means unlimited memory)
+  1.	post_max_size = 250 MByte
+  2.	file_uploads = On
+  3.	upload_max_filesize = 220 MByte
+  4.	max_file_uploads = 1 (1 means 1 file per request)
+  5.	max_input_time = -1 (-1 means unlimited input time) 
+  6.	max_execution_time = -1 (-1 means unlimited execution time)
+  7.	memory_limit = -1 (-1 means unlimited memory)
 
 4)	Files directory
 The system consists of a hierarchy of folders that contain the files. Read and write permissions are required to modify files in these folders. However, the folder named “Reference” should only have read permission in order to prevent any modifications of the reference files. 
