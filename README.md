@@ -43,7 +43,7 @@ The system should run on modern browsers (such as Google Chrome, Firefox, Safari
 
 3)	Configurations
 	The system has many challenges including: 1) uploading large files (up to 200 MB), 2) the execution time can exceed 15 minutes for a single request, and 3) a lot of data are used at runtime. Consequently, some PHP configurations must be set as follows to handle these issues.
-  1.	post_max_size = 250 MByte
+       1.	post_max_size = 250 MByte
   2.	file_uploads = On
   3.	upload_max_filesize = 220 MByte
   4.	max_file_uploads = 1 (1 means 1 file per request)
