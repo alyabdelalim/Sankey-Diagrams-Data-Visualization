@@ -1,7 +1,7 @@
 # Sankey-Diagrams-Data-Visualization
 Representation of Reference Building Energy Model Performance Using Sankey Diagrams: Research and Implementation
 
-# Conceptual Framework:
+# Conceptual Framework
 
 The purpose of this framework is to develop a user-graphical interface web page using Hypertext Preprocessor (PHP), JavaScript, and Hypertext Markup Language (HTML) codes to automate the process of creating Sankey diagrams from energy simulation (EnergyPlus) output files. 
 
@@ -11,8 +11,28 @@ The user at first inserts the IDF file (without output variables and meters) in 
 
 EnergyPlus simulation output ESO files were selected for the purpose of this study as it can contain all output variables and meters. The PHP code then analyzes the ESO file by matching certain strings and patterns in the IDF file. The PHP code then generates Comma Separated Value (CSV) files that are read by JavaScript code to generate Sankey diagrams. The user can control the displayed diagrams including number of diagrams, colors, and fonts. The user also can select spatial resolution from a drop-down menu (i.e. building-level and HVAC system) and temporal resolution (i.e. monthly, daily, and hourly) using a slide bar. 
 
+# Front-end Implementation
 
-# Deployment of the System:
+This section explains the front-end implementation of the user-graphical interface web page developed including Hypertext Markup Language (HTML) and JavaScript codes.
+
+Hypertext Markup Language (HTML)
+
+The purpose of this code is to create the required elements in the webpage. These elements are: 1) select number and name of diagrams, 2) upload IDF file, 3) select building type from a drop-down menu, 4) generate IDF file with the required list of simulation output variables and meters, 5) upload ESO file, 6) generate CSV files, 7) select spatial resolution from a drop-down menu, 8) select temporal resolution from a slide bar, 9) play/pause buttons to animate the Sankey diagrams, 10) day and time caption of the Sankey diagram displayed, 11) select color for each diagram, and 12) show/hide diagrams. 
+
+JavaScript
+
+The JavaScript codes developed in this study aimed to: 1) generate nodes and links between elements to create Sankey diagrams using D3 (Data-Driven Documents) JavaScript library, 2) create functions for the elements created in the HTML code (such as generate and download IDF files, upload ESO file, add/remove diagrams, selecting building type, generate CSV files, select spatial resolution, select temporal resolution using slide bar, animate the results, show/hide diagrams, and add caption of the displayed Sankey diagram), and 3) provide the controls for the elements created in the HTML code (such as load data from CSV files, construct Sankey diagram(s), changing color of diagrams, and transform nodes and links of Sankey diagrams). 
+
+# Back-end Implementation
+
+This section explains the back-end implementation of the user-graphical interface web page developed including Hypertext Preprocessor (PHP) code.
+
+Hypertext Preprocessor (PHP)
+
+The purpose of the PHP code is to perform operations on the files uploaded in the web page by the user (i.e. IDF and ESO files). The operations performed are: 1) generate IDF files with the required list of simulation output variables and meters, 2) analyze ESO files, 3) generate CSV files, and 4) checking the energy balance.
+
+
+# Deployment of the System
 
 This section states the environment configurations and the system requirements for deployment.  
 1)	Installations
