@@ -1,0 +1,260 @@
+<br clear="all"><!DOCTYPE html>
+<meta charset="utf-8">
+<title>SANKEY Experiment</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="resources/bootstrap.min.css">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+<style>
+    .nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+    .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+    .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+    .tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+    .tab-pane { padding: 15px 0; }
+    .tab-content{padding:20px}
+
+    .card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
+    body{ background: #EDECEC; padding:50px}
+</style>
+<style>
+    .overlay {
+        background: #e9e9e9;
+        display: block;
+        position: absolute;
+        right: 0;
+        left: 0;
+        opacity: 0.7;
+        z-index: 20;
+        top: 0;
+        bottom: 0;
+    }
+    #loading-img {
+        background: url("images/loading.gif") center center no-repeat;
+        height: 100%;
+    }
+</style>
+
+<style>
+
+    text {
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+    path {
+        fill: none;
+        stroke: #000;
+        stroke-opacity: .2;
+    }
+
+    path:hover {
+        stroke-opacity: .5;
+    }
+
+    rect {
+        cursor: move;
+        fill-opacity: 1;
+        shape-rendering: crispEdges;
+    }
+
+    .slider label {
+        position: absolute;
+        width: 10px;
+        margin-left: -10px;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 8px;
+        font-weight: 100;
+    }
+
+    .slider {
+        width: 1000px;
+        margin: 2em auto;
+        margin-left: 10px;
+    }
+    .dropdown-menu{
+        position: relative!important;
+        top: 30px;
+        left: 330px;
+    }
+</style>
+<body>
+<div class="container" style="margin-left: -30px;margin-top: -50px;height: 4000px;width: 100%">
+    <div class="row">
+        <div>
+            <div class="card" style="width: 100%">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" style="width:50%;text-align:center" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                <li role="presentation" style="width:50%;text-align:center"><a  href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sankey Diagrams</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" style="width: 100%;height: 100%">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="row">
+                        <div id="dv_files_loading_image" class="overlay" style="display:none">
+                            <div id="loading-img">
+                            </div>
+                        </div>
+                        <div style="text-align: center;margin-bottom: 20px">
+                            <h1>Implementation of Representation of Reference</h1>
+                            <h2>Building Energy Model Performance Using Sankey Diagrams</h2>
+                        </div>
+
+                        <div class="col-md-6 col-lg-5" style="float: left;">
+
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        Diagram Name
+                                    </td>
+                                    <td style="text-align: right" >
+                                        <input type="text" name="diagram_name" id="diagram_name">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Select .idf file to upload
+                                    </td>
+                                    <td style="text-align: right">
+                                        <input accept=".idf" type="file" name="fileToUpload" id="idf_file">
+                                    </td>
+                                </tr>
+                                <tr style="padding-top: 50px">
+                                    <td>
+                                        Select Building Type
+                                    </td>
+                                    <td style="text-align: right">
+                                        <select id="slct_building_type">
+                                            <option value="3" selected="selected">Large Office</option>
+                                            <option value="2">Medium Office</option>
+                                            <option value="1">Small Office</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: right">
+                                        <button id="btn_idf_generate">Generate IDF File</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div  class="col-md-6 col-lg-5" style="padding-left: 50px">
+                            <div style="text-align: center">
+                                List of Sankey Diagrams
+                            </div>
+                            <div id="dv_diagrams_list">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;padding-top: 50px">
+                        <button style="width:250px" id="btn_rmv_all">Remove All Diagrams</button>
+                        <button style="margin-left:100px;width:250px" id="btn_generate_csv">Generate CSV</button>
+                    </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <h3 style="text-align: center" id="week_number_title">JAN 1: Monday 0:00</span></h3>
+                    <div style="z-index: 1;position: absolute">
+                        <table>
+                            <tbody>
+                            <tr style="height: 120px">
+                                <td style="width: 15%">
+                                    Spatial Resoultion
+                                    <br>
+                                    <select style="z-index: 1" id="slct_spatial_resolution">
+                                        <option>Building Level</option>
+                                        <option>HVAC System</option>
+                                    </select>
+                                </td>
+                                <td style="width: 45%" align="right">
+                                    <table id="colors_table">
+
+                                    </table>
+                                </td>
+                                <td style="width: 40%" align="right">
+                                    <!--<div class="button-group">-->
+                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Show/Hide Diagrams<span class="caret"></span></button>
+                                        <ul style="align-content: left" class="dropdown-menu" id="diagrams_display_dd">
+
+                                        </ul>
+                                    <!--</div>-->
+                               </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    Slideshow
+                                    <button id="btn_slideshow" onclick="ToggleSlideShow()" style="font-size: 14px"><span id="span_slideshow" class="glyphicon glyphicon-play"></span></button>
+                                    <button id="btn_slideshow_speed" onclick="SpeedSlideShow()" style="font-size: 14px">1.0x</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="slider_radio" checked="checked" value="hours">Hours [Unit: W]
+                                </td>
+                                <td colspan="2">
+                                    <div  class="slider" id="hours_slider"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    <input type="radio" name="slider_radio" value="days">Days [Unit: kWh]
+                                </td>
+                                <td colspan="2">
+                                    <div class="slider" id="days_slider"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="slider_radio" value="months">Months [Unit: kWh]
+                                </td>
+                                <td colspan="2">
+                                    <div  class="slider" id="months_slider"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div id="chart"></div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="resources//d3.v3.min.js"></script>
+<script type="text/javascript" src="resources/sankey.js"></script>
+<script type="text/javascript" src="resources/global_vars.js"></script>
+<script type="text/javascript" src="resources/spatial_resolution.js"></script>
+<script type="text/javascript" src="resources/slideshow.js"></script>
+<script type="text/javascript" src="resources/colors_selector.js"></script>
+<script type="text/javascript" src="resources/diagrams_dropdown.js"></script>
+<script type="text/javascript" src="resources/sliders.js"></script>
+<script type="text/javascript" src="resources/generic_sankey.js"></script>
+<script type="text/javascript" src="resources/main_page.js"></script>
+<script type="text/javascript" src="resources/document_ready.js"></script>
+</body>
+</html>

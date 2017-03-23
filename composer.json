@@ -1,0 +1,7 @@
+{
+    "require": {
+        "silex/silex": "~2.0",
+        "twig/twig" : "*",
+        "phpoffice/phpexcel" : "*"
+    }
+}

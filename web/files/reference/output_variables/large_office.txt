@@ -1,0 +1,147 @@
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLE ===========
+
+Output:Variable,
+    *,                       !- Key Value
+    Pump Electric Energy,    !- Variable Name
+    Hourly;                  !- Reporting Frequency
+	
+Output:Variable,
+    *,                       !- Key Value
+    Pump Fluid Heat Gain Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency	
+	
+Output:Variable,
+    *,                       !- Key Value
+    Baseboard Total Heating Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    System Node Mass Flow Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    System Node Enthalpy,    !- Variable Name
+    Hourly;                  !- Reporting Frequency	
+
+Output:Variable,
+    *,                       !- Key Value
+    Air System Humidifier Electric Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    Air System Humidifier Gas Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+		
+Output:Variable,
+    *,                       !- Key Value
+    People Sensible Heating Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    People Latent Gain Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency	
+	
+Output:Variable,
+    *,                       !- Key Value
+    Zone Infiltration Total Heat Gain Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+	
+Output:Variable,
+    *,                       !- Key Value
+    Zone Windows Total Transmitted Solar Radiation Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    Zone Windows Total Heat Gain Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency	
+	
+Output:Variable,
+    *,                       !- Key Value
+    Surface Inside Face Conduction Heat Gain Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+	
+Output:Variable,
+    *,                       !- Key Value
+    Zone Windows Total Heat Loss Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+	
+Output:Variable,
+    *,                       !- Key Value
+    Surface Inside Face Conduction Heat Loss Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+	
+Output:Variable,
+    *,                       !- Key Value
+    Zone Infiltration Total Heat Loss Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency	
+		
+Output:Variable,
+    *,                       !- Key Value
+    Cooling Tower Fan Electric Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    Heating Coil Heating Energy,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    Surface Heat Storage Gain Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    Surface Heat Storage Loss Rate,  !- Variable Name
+    Hourly;                  !- Reporting Frequency
+	
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:METER ===========
+
+Output:Meter,
+    InteriorLights:Electricity,  !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    InteriorEquipment:Electricity,  !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Boiler:Heating:Gas,      !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Boilers:EnergyTransfer,  !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    CoolingCoils:EnergyTransfer,  !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Baseboard:EnergyTransfer,!- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Boiler Parasitic:Heating:Electricity,  !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Fans:Electricity,        !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Heating:Electricity,     !- Name
+    Hourly;                  !- Reporting Frequency
+
+Output:Meter,
+    Cooling:Electricity,     !- Name
+    Hourly;                  !- Reporting Frequency
+
+	
