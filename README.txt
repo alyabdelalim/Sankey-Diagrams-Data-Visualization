@@ -1,3 +1,5 @@
+Instructions for system deployment:
+
 1- Run composer update to install all required packages
 
 2- Run 'web/index.html' in the browser.
